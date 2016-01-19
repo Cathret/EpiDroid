@@ -310,6 +310,7 @@ public class LoginIntraActivity extends AppCompatActivity implements LoaderCallb
                 toSend.put("password", mPassword);
                 answer = ConnectionUtilities.post("login", toSend);
             } catch (Exception e) {
+                e.printStackTrace();
                 return false;
             }
 

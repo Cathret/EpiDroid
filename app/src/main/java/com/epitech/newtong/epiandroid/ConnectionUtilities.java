@@ -42,7 +42,9 @@ public class ConnectionUtilities {
             while (keys.hasNext())
             {
                 String key = (String)keys.next();
-                strToSend += "\"" + key + "\":\"" + toSend.getString(key) + "\"\n";
+                strToSend += key + "=" + toSend.getString(key);
+                if (keys.hasNext())
+                    strToSend += "&";
             }
             // Post
             OutputStream os = connection.getOutputStream();
