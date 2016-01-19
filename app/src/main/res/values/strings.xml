@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EpiAndroid</string>
+    <string name="app_name">EpiAndroid Intranet</string>
     
     <!-- Strings related to login -->
     <string name="prompt_login">Login</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EpiAndroid</string>
+    <string name="app_name">EpiAndroid Intranet</string>
     <string name="error_field_required">Ce champ est obligatoire</string>
     <string name="error_incorrect_password">Le mot de passe est incorrect</string>
     <string name="error_invalid_login">Ce login n\'est pas valide</string>
