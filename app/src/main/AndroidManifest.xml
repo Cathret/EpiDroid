@@ -8,7 +8,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".LoginActivity_"
             android:label="EpiAndroid">
@@ -25,6 +24,14 @@
         <activity
             android:name=".PlanningActivity_"
             android:label="@string/title_activity_planning"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ModuleActivity_"
+            android:label="@string/title_activity_module"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MarkActivity_"
+            android:label="@string/title_activity_mark"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

@@ -7,9 +7,13 @@
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_login">Connexion</string>
     <string name="title_activity_planning">Planning</string>
+    <string name="title_activity_module">Modules</string>
+    <string name="title_activity_mark">Notes</string>
 
     <string name="prompt_email">Login</string>
     <string name="prompt_password">Mot de Passe</string>
     <string name="action_sign_in">Connexion</string>
     <string name="error_field_required">Ce champ est requis</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
