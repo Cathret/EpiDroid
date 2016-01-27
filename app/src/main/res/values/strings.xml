@@ -14,6 +14,9 @@
     <string name="prompt_password">Mot de Passe</string>
     <string name="action_sign_in">Connexion</string>
     <string name="error_field_required">Ce champ est requis</string>
+    <string name="error_login_required">Login invalide</string>
+    <string name="error_wpassword_required">Login invalide</string>
+
 
     <string name="action_settings">Settings</string>
 </resources>
