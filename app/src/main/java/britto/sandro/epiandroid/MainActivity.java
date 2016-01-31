@@ -24,6 +24,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import britto.sandro.epiandroid.Request.InfosTask;
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String user;
     private String date;
     private String content;
+    LinkedList<String> MyList;
 
     protected String token;
 
@@ -99,10 +103,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LogTime.setText("Temps de Log : " + this.currentlogTime);
         Semester.setText("Semester " + this.semester);
         GPA.setText("GPA : " + this.currentGPA);
-        Title.setText(this.title);
-        User.setText(this.user);
-        Date.setText(this.date);
-        Content.setText(this.content);
+        for(int i = 0; i < MyList.size(); i++)
+        {
+            Title.setText(this.title);
+            User.setText(this.user);
+            Date.setText(this.date);
+            Content.setText(this.content);
+        }
     }
 
     @Background
@@ -144,7 +151,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_profile) {
             drawer_layout.closeDrawer(GravityCompat.START);
-            startActivity(new Intent(this, MainActivity_.class));
+            Intent intent = new Intent(this, MainActivity_.class);
+            intent.putExtra("token", token);
+            startActivity(intent);
         } else if (id == R.id.nav_planning) {
             drawer_layout.closeDrawer(GravityCompat.START);
             startActivity(new Intent(this, PlanningActivity_.class));
@@ -153,7 +162,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, ModuleActivity_.class));
         } else if (id == R.id.nav_mark) {
             drawer_layout.closeDrawer(GravityCompat.START);
-            startActivity(new Intent(this, MarkActivity_.class));
+            Intent intent = new Intent(this, MarkActivity_.class);
+            intent.putExtra("token", token);
+            startActivity(intent);
         } else if (id == R.id.nav_logout) {
             drawer_layout.closeDrawer(GravityCompat.START);
             startActivity(new Intent(this, LoginActivity_.class));
@@ -195,12 +206,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (NResponse != null) {
             try {
                 JSONArray array = new JSONArray(NResponse);
+                MyList = new LinkedList<String>();
                 for (int i = 0; i < array.length(); i++)
                 {
-                    this.title = array.getJSONObject(i).getString("title");
-                    this.user = array.getJSONObject(i).getJSONObject("user").getString("title");
-                    this.date = array.getJSONObject(i).getString("date");
-                    this.content = array.getJSONObject(i).getString("content");
+                    MyList.add(this.title = array.getJSONObject(i).getString("title"));
+                    MyList.add(this.user = array.getJSONObject(i).getJSONObject("user").getString("title"));
+                    MyList.add(this.date = array.getJSONObject(i).getString("date"));
+                    MyList.add(this.content = array.getJSONObject(i).getString("content"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -127,7 +127,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity_.class);
             intent.putExtra("token", Token);
             startActivity(intent);
-
         }
     }
 

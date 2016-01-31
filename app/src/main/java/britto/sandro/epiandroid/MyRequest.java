@@ -24,4 +24,6 @@ public interface MyRequest extends RestClientErrorHandling {
     String Info(InfosTask info);
     @Get("/messages?token={token}")
     String Notif (String token);
+    @Get("/marks?token={token}")
+    String Mark (String token);
 }
