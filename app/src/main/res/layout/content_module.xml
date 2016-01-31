@@ -8,8 +8,10 @@
     tools:context="britto.sandro.epiandroid.ModuleActivity"
     tools:showIn="@layout/app_bar_module">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/listView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

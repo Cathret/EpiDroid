@@ -69,5 +69,7 @@ public class ModuleActivity extends AppCompatActivity implements NavigationView.
         drawer_layout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
 

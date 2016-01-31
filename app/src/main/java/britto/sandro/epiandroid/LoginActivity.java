@@ -3,6 +3,7 @@ package britto.sandro.epiandroid;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -31,6 +32,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.rest.RestService;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,15 +48,22 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import britto.sandro.epiandroid.Request.LoginTask;
+
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends AppCompatActivity {
 
+    public String Token;
+    private String response;
+
+
+    @RestService
+    MyRequest API;
+
     @ViewById
     AutoCompleteTextView vlogin;
-
     @ViewById
     EditText vpassword;
-
     @UiThread
     void settingFieldError() {
         vlogin.setError(null);
@@ -64,12 +74,10 @@ public class LoginActivity extends AppCompatActivity {
     void setLoginRequired() {
         vlogin.setError(getString(R.string.error_field_required));
     }
-
     @UiThread
     void setWrongLoginRequired() {
-        vlogin.setError(getString(R.string.error_login_required));
+        vlogin.setError(getString(R.string.error_wlogin_required));
     }
-
     @UiThread
     void setPasswdRequired() {
         vpassword.setError(getString(R.string.error_field_required));
@@ -113,12 +121,31 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (cancel)
             setView(focusView);
-        else
-            startActivity(new Intent(this, MainActivity_.class));
+        else {
+            LoginTask log = new LoginTask(login, passwd);
+            tokenParsingExecute(API.Login(log));
+            Intent intent = new Intent(this, MainActivity_.class);
+            intent.putExtra("token", Token);
+            startActivity(intent);
+
         }
+    }
+
+     protected void tokenParsingExecute(String response) {
+        JSONObject json;
+        try {
+            json = new JSONObject(response);
+            if (json.has("token")) {
+                this.Token = json.getString("token");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Click(R.id.login_sign_in_button)
     void SignInClicked() {
          attemptLogin();
         }
 }
+

@@ -10,11 +10,11 @@
     <string name="title_activity_module">Modules</string>
     <string name="title_activity_mark">Notes</string>
 
-    <string name="prompt_email">Login</string>
-    <string name="prompt_password">Mot de Passe</string>
+    <string name="prompt_email">login_x</string>
+    <string name="prompt_password">Mot de Passe (UNIX)</string>
     <string name="action_sign_in">Connexion</string>
     <string name="error_field_required">Ce champ est requis</string>
-    <string name="error_login_required">Login invalide</string>
+    <string name="error_wlogin_required">Login invalide</string>
     <string name="error_wpassword_required">Login invalide</string>
 
 
