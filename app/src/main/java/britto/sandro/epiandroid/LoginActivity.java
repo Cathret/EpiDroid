@@ -79,6 +79,10 @@ public class LoginActivity extends AppCompatActivity {
         vlogin.setError(getString(R.string.error_wlogin_required));
     }
     @UiThread
+    void setWrongPasswordRequired() {
+        vpassword.setError(getString(R.string.error_wpassword_required));
+    }
+    @UiThread
     void setPasswdRequired() {
         vpassword.setError(getString(R.string.error_field_required));
     }
@@ -89,6 +93,11 @@ public class LoginActivity extends AppCompatActivity {
         return (true);
     }
 
+    private boolean isPassValid(String Password){
+        if (Password.length() > 8 || Password.length() > 8)
+            return (false);
+        return(true);
+    }
     @UiThread
     void setView(View focusView) {
         focusView.requestFocus();
@@ -117,6 +126,12 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!isLoginValid(login)) {
             setWrongLoginRequired();
             focusView = vlogin;
+            cancel = true;
+        }
+          else if (!isPassValid(passwd))
+        {
+            setWrongPasswordRequired();
+            focusView = vpassword;
             cancel = true;
         }
         if (cancel)

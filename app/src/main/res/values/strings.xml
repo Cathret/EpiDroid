@@ -15,7 +15,7 @@
     <string name="action_sign_in">Connexion</string>
     <string name="error_field_required">Ce champ est requis</string>
     <string name="error_wlogin_required">Login invalide</string>
-    <string name="error_wpassword_required">Login invalide</string>
+    <string name="error_wpassword_required">Password invalide</string>
 
 
     <string name="action_settings">Settings</string>
